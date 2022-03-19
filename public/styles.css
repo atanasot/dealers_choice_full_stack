@@ -1,0 +1,25 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 1rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    padding: 0.5rem;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+nav a.selected {
+    background-color:blueviolet;
+    color: cornsilk;
+}
