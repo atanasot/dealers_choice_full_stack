@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const { STRING } = Sequelize;
+const { STRING, UUID, UUIDV4 } = Sequelize;
 const sequelize = new Sequelize(
   process.env.DATABASR_URL || "postgres://localhost/dealers_choice_full_stack"
 );
@@ -7,6 +7,12 @@ const sequelize = new Sequelize(
 // Setting up the models
 
 const Dog = sequelize.define("dog", {
+  // id: {
+  //   type: UUID,
+  //   defaultValue: UUIDV4,
+  //   allowNull: false,
+  //   primaryKey: true
+  // },
   name: {
     type: STRING(20),
     allowNull: false,   // got rid unique: true because of faker

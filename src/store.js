@@ -16,9 +16,6 @@ const dogs = (state = [], action) => {
   if (action.type === CREATE_FAKER_DOG) {
     state = [...state, action.dog]
   }
-  if (action.type === CREATE_FAKER_DOG) {
-    state = [...state, action.dog]
-  }
   if (action.type === DELETE_DOG) {
     return state.filter(dog => dog.id !== action.dog.id)
   }
