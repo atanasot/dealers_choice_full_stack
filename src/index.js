@@ -23,7 +23,7 @@ class _App extends React.Component {
           <h1>Cute Doggies</h1>
           <Route component={ Nav } />
           <Route component={ Home } path='/' exact/>
-          <Route component={ Dogs} path='/dogs'/>
+          <Route component={ Dogs} path='/dogs' exact/>
           <Route component= {Dog} path='/dogs/:id' />
         </div>
       </Router>

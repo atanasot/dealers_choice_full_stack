@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Dogs = ({dogs}) => {
   return (
-    <ul>
+    <ul >
       {dogs.map((dog) => (
         <li key={dog.id}>
         <Link to={`/dogs/${dog.id}`}>{dog.name}</Link>

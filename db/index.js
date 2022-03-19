@@ -9,12 +9,11 @@ const sequelize = new Sequelize(
 const Dog = sequelize.define("dog", {
   name: {
     type: STRING(20),
-    allowNull: false,
-    unique: true,
+    allowNull: false,   // got rid unique: true because of faker
     validate: {
       notEmpty: true
     },
-  },
+  }, // do maybe a virtual box for the input that's added by the user
 });
 
 const Type = sequelize.define("type", {
