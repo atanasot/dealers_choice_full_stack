@@ -12,7 +12,10 @@ h1 {
 nav {
     display: flex;
     justify-content: space-around;
+    padding-bottom: 40px;
 }
+
+
 
 nav > button {
     background-color: hotpink;
@@ -40,4 +43,20 @@ nav a {
 nav a.selected {
     background-color:blueviolet;
     color: cornsilk;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, button {
+    height: 3rem;
+}
+
+
+form > * {
+    margin: 1rem;
+    width: 20rem;
 }

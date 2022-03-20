@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import faker from "faker"; 
-import {createFakerDog} from './store'
+import {createDog} from './store'
  
 const Nav = ({createFaker, dogs, location: {pathname}}) => {
     return(
@@ -17,7 +17,7 @@ const Nav = ({createFaker, dogs, location: {pathname}}) => {
 
 // getting otherProps from mapDispatchToProps to use the history object -- pass history in createFakerDog as a second arg -- we can change the url
 const mapDispatchToProps = (dispatch, {history}) => {
-    return {createFaker: (name) => dispatch(createFakerDog(name, history))} // this is how we change the url with the history obj
+    return {createFaker: (name) => dispatch(createDog(name, history))} // this is how we change the url with the history obj
     
 }
 
