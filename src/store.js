@@ -41,12 +41,20 @@ const reducer = combineReducers({
 export const fetchDogs = () => {
   return async (dispatch) => {
     const dogs = (await axios.get("/api/dogs")).data;
-    dispatch(loadDogs(dogs));
+    dispatch(_loadDogs(dogs));
   };
 };
 
 // add history here -- when we create a dog we want to automatically go to the new dogs page
-export const createDog = (name, history) => {
+export const createDog = (dog, history) => {   
+  return async (dispatch) => {
+    const response = await axios.post("/api/dogs", dog);
+    dispatch(_createDog(response.data));
+    history.push(`/dogs/${dog.id}`);
+  };
+};
+
+export const createFakerDog = (name, history) => {   
   return async (dispatch) => {
     const dog = (await axios.post("/api/dogs", { name })).data;
     dispatch(_createDog(dog));
@@ -71,7 +79,7 @@ export const fetchTypes = () => {
 
 //*****************************************************************************************************
 // Action Creators
-const loadDogs = (dogs) => ({ type: LOAD_DOGS, dogs });
+const _loadDogs = (dogs) => ({ type: LOAD_DOGS, dogs });
 
 const _createDog = (dog) => ({ type: CREATE_DOG, dog });
 
