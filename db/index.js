@@ -15,11 +15,11 @@ const Dog = sequelize.define("dog", {
   // },
   name: {
     type: STRING(20),
-    unique: true,
-    allowNull: false, // got rid unique: true because of faker
+    unique: true,    //check for upper case name?
+    allowNull: false, 
     validate: {
       notEmpty: {
-        msg: "Please provide a doggie name!",
+        msg: "Please provide a doggie name",
       },
       len: {
         args: [1, 20],
@@ -48,6 +48,7 @@ const syncAndSeed = async () => {
     const berneDoodle = await Type.create({ name: "bernedoodle" });
     const labraDoodle = await Type.create({ name: "labradoodle" });
     const teddyBearDoodle = await Type.create({ name: "teddybeardoodle" });
+    const other = await Type.create({name: 'other'})
 
     //seeding the dogs table
     const [
@@ -60,17 +61,19 @@ const syncAndSeed = async () => {
       ollie,
       cooper,
       monroe,
+      tali
     ] = await Promise.all(
       [
-        "eros",
-        "milli",
-        "chance",
-        "fiona",
-        "skipper",
-        "rooster",
-        "ollie",
-        "cooper",
-        "monroe",
+        "Eros",
+        "Milli",
+        "Chance",
+        "Fiona",
+        "Skipper",
+        "Rooster",
+        "Ollie",
+        "Cooper",
+        "Monroe",
+        "Tali"
       ].map((name) => Dog.create({ name }))
     );
 
@@ -83,6 +86,8 @@ const syncAndSeed = async () => {
     ollie.typeId = goldenDoodle.id;
     cooper.typeId = berneDoodle.id;
     monroe.typeId = berneDoodle.id;
+    rooster.typeId = other.id
+    tali.typeId = other.id
 
     // save the typeId from up above
     await Promise.all([
@@ -94,6 +99,8 @@ const syncAndSeed = async () => {
       ollie.save(),
       cooper.save(),
       monroe.save(),
+      rooster.save(),
+      tali.save()
     ]);
     console.log("connected to db");
   } catch (err) {

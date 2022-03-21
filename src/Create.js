@@ -42,11 +42,19 @@ class Create extends Component {
         <pre>
           {!!error.errors && <h2 >{error.errors[0].message}</h2>}
         </pre>
-        <input name="name" value={name} onChange={onChange} />
+        <input name="name" placeholder="dog's name" value={name} onChange={onChange} />
+        <select name="typeId">
+
+        </select>
         <button>Save</button>
       </form>
     );
   }
+}
+
+const mapStateToProps = (state) => {
+    console.log(state)
+    return state
 }
 
 // check database for duplicate names
@@ -56,4 +64,4 @@ const mapDispatchToProps = (dispatch, { history }) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Create);
+export default connect(mapStateToProps, mapDispatchToProps)(Create);  //use mapState to get types

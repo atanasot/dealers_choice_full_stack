@@ -4,7 +4,7 @@ import { deleteDog } from "./store";
 
 const Dog = ({ dog, destroy }) => {
   if (!dog.id) {  //error without this on a hard reload
-    return '...loading'  //fix to return null
+    return null
   }
   return (<div>
     Dog details for {dog.name}

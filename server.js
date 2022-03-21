@@ -11,6 +11,14 @@ app.use(express.json()) //body parser for a post
 
 // Routes
 
+app.get('/api/types', async(req, res, next) => {
+    try {
+        res.send(await Type.findAll())
+    } catch (err) {
+        next(err)
+    }
+})
+
 app.get('/api/dogs', async(req, res, next) => {
     try {
         res.send(await Dog.findAll())
