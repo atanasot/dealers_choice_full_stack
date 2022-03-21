@@ -15,9 +15,16 @@ const Dog = sequelize.define("dog", {
   // },
   name: {
     type: STRING(20),
-    allowNull: false,   // got rid unique: true because of faker
+    unique: true,
+    allowNull: false, // got rid unique: true because of faker
     validate: {
-      notEmpty: true
+      notEmpty: {
+        msg: "Please provide a doggie name!",
+      },
+      len: {
+        args: [1, 20],
+        msg: "Name is too long!",
+      },
     },
   }, // do maybe a virtual box for the input that's added by the user
 });

@@ -37,6 +37,15 @@ app.delete('/api/dogs/:id', async(req, res, next) => {
     }
 })
 
+// Error Handler
+app.use((err, req, res, next) => {
+    // if (err.name === 'SequelizeValidationError') {
+    //     res.status(500).send('<h1>heeyyy</h1>')
+    // }
+    console.log(err)
+    res.status(500).send({error: err})
+})
+
 const port = process.env.PORT || 3000;
 
 const start = async () => {
