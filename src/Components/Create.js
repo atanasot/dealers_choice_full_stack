@@ -35,7 +35,6 @@ class Create extends Component {
   }
 
   render() {
-    console.log(this.state);
     const { name, error, typeId } = this.state;
     const { types } = this.props;
     const { onChange, onSave } = this;
