@@ -35,6 +35,15 @@ app.post('/api/dogs', async(req, res, next) => {
     }
 })
 
+app.put('/api/dogs/:id', async(req, res, next) => {
+    try {
+        const dog = await Dog.findByPk(req.params.id)
+        res.send(await dog.update(req.body))
+    } catch (err) {
+        next(err)
+    }
+})
+
 app.delete('/api/dogs/:id', async(req, res, next) => {
     try {
         const dog = await Dog.findByPk(req.params.id)

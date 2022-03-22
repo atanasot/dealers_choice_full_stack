@@ -8,6 +8,7 @@ const LOAD_DOGS = "LOAD_DOGS";
 const CREATE_DOG = "CREATE_DOG";
 const DELETE_DOG = "DELETE_DOG";
 const LOAD_TYPES = "LOAD_TYPES";
+const UPDATE_DOG = 'UPDATE_DOG'
 
 // Dogs Reducer
 const dogs = (state = [], action) => {
@@ -19,6 +20,9 @@ const dogs = (state = [], action) => {
   }
   if (action.type === DELETE_DOG) {
     return state.filter((dog) => dog.id !== action.dog.id);
+  }
+  if (action.type === UPDATE_DOG) {
+    return state.map(dog => dog.id !== action.dog.id ? dog : action.dog)
   }
   return state;
 };
@@ -54,6 +58,14 @@ export const createDog = (dog, history) => {
   };
 };
 
+export const updateDog = (id, dog, history) => {
+  return async (dispatch) => {
+    const updatedDog = (await axios.put(`/api/dogs/${id}`, dog)).data
+    dispatch(_updateDog(updatedDog));
+    history.push("/dogs"); 
+  };
+};
+
 export const createFakerDog = (name, history) => {   
   return async (dispatch) => {
     const dog = (await axios.post("/api/dogs", { name })).data;
@@ -82,6 +94,8 @@ export const fetchTypes = () => {
 const _loadDogs = (dogs) => ({ type: LOAD_DOGS, dogs });
 
 const _createDog = (dog) => ({ type: CREATE_DOG, dog });
+
+const _updateDog = (dog) => ({type: UPDATE_DOG, dog})
 
 const _deleteDog = (dog) => ({ type: DELETE_DOG, dog });
 
