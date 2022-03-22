@@ -46,7 +46,7 @@ class Update extends Component {
     try {
       await this.props.update(this.props.dog.id, dog);
     } catch (err) {
-        console.log(err)
+        //console.log(err)
       this.setState({ error: err.response.data.error });
     }
   }

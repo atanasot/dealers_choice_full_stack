@@ -17,7 +17,7 @@ nav {
 
 
 
-nav > button {
+button {
     background-color: hotpink;
     border: none;
     color: cornsilk;
@@ -51,7 +51,7 @@ form {
     align-items: center;
 }
 
-input, button {
+input, button, select {
     height: 3rem;
 }
 
@@ -59,4 +59,15 @@ input, button {
 form > * {
     margin: 1rem;
     width: 20rem;
+}
+
+
+
+img {
+    display: inline-block;
+}
+
+.delete {
+    background-color: red;
+    margin: 15px;
 }

@@ -39,6 +39,8 @@ const Type = sequelize.define("type", {
 Dog.belongsTo(Type);
 Type.hasMany(Dog);
 
+
+
 const syncAndSeed = async () => {
   try {
     await sequelize.sync({ force: true });

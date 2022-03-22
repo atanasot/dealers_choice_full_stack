@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { deleteDog } from "./store";
 import { Link } from "react-router-dom";
 
-const Dog = ({ dog, destroy }) => {
+const Dog = ({ dog, destroy, type }) => {
   if (!dog.id) {
     //error without this on a hard reload
     return null;
   }
   return (
     <div>
-      Dog details for {dog.name}
+      Dog details for {dog.name} 
       <br />
-      <button onClick={() => destroy(dog)}>Delete</button>
+      <button className='delete' onClick={() => destroy(dog)}>Delete</button>
       <br />
       <Link to={`/dogs/${dog.id}/update`}>Update</Link>
     </div>
@@ -25,10 +25,12 @@ const mapDispatchToProps = (dispatch, { history }) => {
   };
 };
 
-// mapState takes in 2 args: state and otherProps. We can get the match obj from otherProps because its a component inside a Router.
-// we get dog from the state (first arg) which we get from mapState
+
 export default connect((state, otherProps) => {
   const dog =
     state.dogs.find((dog) => dog.id === otherProps.match.params.id * 1) || {};
+  //const type = state.types.find(type => type.id === dog.typeId)
+  //console.log(state.types)
+  console.log(dog)
   return { dog };
 }, mapDispatchToProps)(Dog);

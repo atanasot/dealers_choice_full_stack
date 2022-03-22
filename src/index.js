@@ -2,14 +2,23 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider, connect } from "react-redux";
 import store, { fetchDogs, fetchTypes } from "./store";
-import { HashRouter, Route, Link, Switch } from "react-router-dom"; //rename HashRouter to just Router
+import { HashRouter, Route, Link, Switch } from "react-router-dom";
 import Dogs from "./Dogs";
 import Nav from "./Nav";
 import Dog from "./Dog";
 import Create from "./Create";
 import Update from "./Update";
 
-const Home = () => <hr />;
+const Home = () => (
+  <picture>
+    <img
+      src="/pics/Eros1.jpg"
+      alt="Eros is the cutest"
+      width="400"
+      height="500"
+    />
+  </picture>
+);
 
 class _App extends React.Component {
   componentDidMount() {

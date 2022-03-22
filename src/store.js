@@ -66,9 +66,9 @@ export const updateDog = (id, dog, history) => {
   };
 };
 
-export const createFakerDog = (name, history) => {   
+export const createFakerDog = (name, typeId, history) => {   
   return async (dispatch) => {
-    const dog = (await axios.post("/api/dogs", { name })).data;
+    const dog = (await axios.post("/api/dogs",{ name, typeId})).data;
     dispatch(_createDog(dog));
     history.push(`/dogs/${dog.id}`);
   };
@@ -78,7 +78,7 @@ export const deleteDog = (dog, history) => {
   return async (dispatch) => {
     await axios.delete(`/api/dogs/${dog.id}`);
     dispatch(_deleteDog(dog));
-    history.push("/dogs"); //go back to /dogs after deleting a dog
+    history.push("/dogs"); 
   };
 };
 
