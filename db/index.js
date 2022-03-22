@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const { STRING } = Sequelize;
 const sequelize = new Sequelize(
-  process.env.DATABASR_URL || "postgres://localhost/dealers_choice_full_stack"
+  process.env.DATABASE_URL || "postgres://localhost/dealers_choice_full_stack"
 );
 
 // Setting up the models
