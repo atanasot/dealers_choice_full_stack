@@ -3,11 +3,11 @@ import { render } from "react-dom";
 import { Provider, connect } from "react-redux";
 import store, { fetchDogs, fetchTypes } from "./store";
 import { HashRouter, Route, Link, Switch } from "react-router-dom";
-import Dogs from "./Dogs";
-import Nav from "./Nav";
-import Dog from "./Dog";
-import Create from "./Create";
-import Update from "./Update";
+import Dogs from "./Components/Dogs";
+import Nav from "./Components/Nav";
+import Dog from "./Components/Dog";
+import Create from "./Components/Create";
+import Update from "./Components/Update";
 
 const Home = () => (
   <picture>
@@ -36,7 +36,6 @@ class _App extends React.Component {
           <Route component={Home} path="/" exact />
           <Route component={Dogs} path="/dogs" exact />
           <Switch>
-            {/* either load one or the other ** more specific route goes first  */}
             <Route component={Create} path="/dogs/create" />
             <Route component={Dog} path="/dogs/:id" exact />
           </Switch>

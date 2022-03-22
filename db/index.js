@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const { STRING, UUID, UUIDV4 } = Sequelize;
+const { STRING } = Sequelize;
 const sequelize = new Sequelize(
   process.env.DATABASR_URL || "postgres://localhost/dealers_choice_full_stack"
 );
@@ -7,16 +7,10 @@ const sequelize = new Sequelize(
 // Setting up the models
 
 const Dog = sequelize.define("dog", {
-  // id: {
-  //   type: UUID,
-  //   defaultValue: UUIDV4,
-  //   allowNull: false,
-  //   primaryKey: true
-  // },
   name: {
     type: STRING(20),
-    unique: true,    //check for upper case name?
-    allowNull: false, 
+    unique: true,
+    allowNull: false,
     validate: {
       notEmpty: {
         msg: "Please provide a doggie name",
@@ -26,7 +20,7 @@ const Dog = sequelize.define("dog", {
         msg: "Name is too long!",
       },
     },
-  }, // do maybe a virtual box for the input that's added by the user
+  },
 });
 
 const Type = sequelize.define("type", {
@@ -39,8 +33,6 @@ const Type = sequelize.define("type", {
 Dog.belongsTo(Type);
 Type.hasMany(Dog);
 
-
-
 const syncAndSeed = async () => {
   try {
     await sequelize.sync({ force: true });
@@ -50,7 +42,7 @@ const syncAndSeed = async () => {
     const berneDoodle = await Type.create({ name: "bernedoodle" });
     const labraDoodle = await Type.create({ name: "labradoodle" });
     const teddyBearDoodle = await Type.create({ name: "teddybeardoodle" });
-    const other = await Type.create({name: 'other'})
+    const other = await Type.create({ name: "other" });
 
     //seeding the dogs table
     const [
@@ -63,7 +55,7 @@ const syncAndSeed = async () => {
       ollie,
       cooper,
       monroe,
-      tali
+      tali,
     ] = await Promise.all(
       [
         "Eros",
@@ -75,7 +67,7 @@ const syncAndSeed = async () => {
         "Ollie",
         "Cooper",
         "Monroe",
-        "Tali"
+        "Tali",
       ].map((name) => Dog.create({ name }))
     );
 
@@ -88,8 +80,8 @@ const syncAndSeed = async () => {
     ollie.typeId = goldenDoodle.id;
     cooper.typeId = berneDoodle.id;
     monroe.typeId = berneDoodle.id;
-    rooster.typeId = other.id
-    tali.typeId = other.id
+    rooster.typeId = other.id;
+    tali.typeId = other.id;
 
     // save the typeId from up above
     await Promise.all([
@@ -102,7 +94,7 @@ const syncAndSeed = async () => {
       cooper.save(),
       monroe.save(),
       rooster.save(),
-      tali.save()
+      tali.save(),
     ]);
     console.log("connected to db");
   } catch (err) {

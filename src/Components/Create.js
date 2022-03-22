@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createDog } from "./store";
+import { createDog } from "../store";
 
 class Create extends Component {
   constructor() {
@@ -15,23 +15,20 @@ class Create extends Component {
   }
 
   onChange(ev) {
-    // need this onChange so we can type inside the form and change options from the dropdown
     const change = {};
     change[ev.target.name] = ev.target.value;
     change[ev.target.typeId] = ev.target.value;
-    this.setState(change); //set the new state to the change obj
+    this.setState(change);
   }
 
-  // we want to see the errors from the database when the user intput doesnt pass the constraints
   async onSave(ev) {
     ev.preventDefault();
     const dog = {
-      // this is how we add a new dog to the db with its name and typeId
       name: this.state.name,
       typeId: Number(this.state.typeId),
     };
     try {
-      await this.props.create(dog); // this create is coming from down below in mapDispatchProps
+      await this.props.create(dog);
     } catch (err) {
       this.setState({ error: err.response.data.error });
     }
@@ -40,14 +37,11 @@ class Create extends Component {
   render() {
     console.log(this.state);
     const { name, error, typeId } = this.state;
-    const { dogs, types, create } = this.props; //we get these from connecting to states store
+    const { types } = this.props;
     const { onChange, onSave } = this;
     return (
       <form onSubmit={onSave}>
-        <pre>
-          {!!error.errors && <h2>{error.errors[0].message}</h2>}
-          {/* id like to make the message go away when user starts typing instead of refreshing the page*/}
-        </pre>
+        <pre>{!!error.errors && <h2>{error.errors[0].message}</h2>}</pre>
         <input
           name="name"
           placeholder="dog's name"
@@ -62,17 +56,17 @@ class Create extends Component {
             </option>
           ))}
         </select>
-        <button disabled={!name || !typeId}>Save</button>
+        <button className="saveUpdate" disabled={!name || !typeId}>
+          Save
+        </button>
       </form>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state)  //{dogs, types} //both are arrays
   return state;
 };
-
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
@@ -80,4 +74,4 @@ const mapDispatchToProps = (dispatch, { history }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Create); //use mapState to get types
+export default connect(mapStateToProps, mapDispatchToProps)(Create);

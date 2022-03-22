@@ -1,73 +1,96 @@
 body {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 1rem;
-    background-color: lavender;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 1rem;
+  background-color: lavender;
 }
 
 h1 {
-    text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-bottom: 50px;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: purple;
 }
 
 nav {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 40px;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 40px;
 }
 
-
-
 button {
-    background-color: hotpink;
-    border: none;
-    color: cornsilk;
-    padding: 12px 28px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    margin: 4px 2px;
-    cursor: pointer;
-    font-weight: bolder;
-    padding: 0.5rem;
-    margin: 0;
+  background-color: orange;
+  border: none;
+  color: cornsilk;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-weight: bolder;
+  padding: 0.5rem;
+  margin: 0;
 }
 
 nav a {
-    padding: 0.5rem;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bolder;
+  padding: 0.5rem;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bolder;
 }
 
 nav a.selected {
-    background-color:blueviolet;
-    color: cornsilk;
+  background-color: blueviolet;
+  color: cornsilk;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-input, button, select {
-    height: 3rem;
+input,
+button,
+select {
+  height: 3rem;
 }
-
 
 form > * {
-    margin: 1rem;
-    width: 20rem;
+  margin: 1rem;
+  width: 20rem;
 }
 
-
-
 img {
-    display: inline-block;
+  display: inline-block;
 }
 
 .delete {
-    background-color: red;
-    margin: 15px;
+  background-color: red;
+  margin: 15px;
+}
+
+.saveUpdate {
+  background-color: orchid;
+}
+
+.updateRoute {
+  font-weight: bolder;
+}
+
+.doggy > a {
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 10px 17px;
+  margin: 2px 2px;
+  font-size: 20px;
+  color: dodgerblue;
+}
+
+.dogsList {
+  font-size: 20px;
+  text-decoration: none;
 }
