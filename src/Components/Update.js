@@ -27,7 +27,6 @@ class Update extends Component {
   onChange(ev) {
     const change = {};
     change[ev.target.name] = ev.target.value;
-    change[ev.target.typeId] = ev.target.value;
     this.setState(change);
   }
 
