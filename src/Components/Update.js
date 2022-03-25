@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { updateDog } from "../store";
 
 class Update extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props) { 
+    super(props);  //this is how we access this.props
     this.state = {
       name: this.props.dog.id ? this.props.dog.name : "",
       typeId: this.props.dog.id ? this.props.dog.typeId : "",

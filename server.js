@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ error: err });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3007;
 
 const start = async () => {
   try {
