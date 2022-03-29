@@ -1,3 +1,5 @@
-# Full Stack Application With React, Redux & Thunks
+# 
+FullStack Application With React, Redux & Thunks
 
-## Depolyed at https://eros-doodle-friends.herokuapp.com/#/
+## 
+Deployed at https://eros-doodle-friends.herokuapp.com/#/
